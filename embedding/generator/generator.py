@@ -1,5 +1,5 @@
 import numpy as np
-from word_embeddings import WordEmbeddings
+from .embeddings import WordEmbeddings
 
 class EmbeddingsGenerator:
     def generate_embeddings(self, words, window_size) -> WordEmbeddings:
