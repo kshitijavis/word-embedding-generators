@@ -130,3 +130,6 @@ dmypy.json
 
 # Data
 setup_data
+
+# IDE
+.vscode
