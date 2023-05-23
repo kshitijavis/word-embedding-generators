@@ -1,11 +1,6 @@
 from embedding.generator.embeddings import WordEmbeddings
 import numpy as np
 import unittest
-import os
-import sys
-sys.path.insert(0, os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..")))
-
 
 class TestWordEmbeddings(unittest.TestCase):
     def test_small_matrix(self):
