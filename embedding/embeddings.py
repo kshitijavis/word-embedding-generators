@@ -8,10 +8,10 @@ class WordEmbeddings:
         if embeddings_matrix.shape != expected_shape:
             raise ValueError(f"Shape of embeddings matrix should be {expected_shape}")
 
-        self.word_inds = word_inds
-        self.embeddings_matrix = embeddings_matrix
+        self.word_inds: dict = word_inds
+        self.embeddings_matrix: embeddings_matrix = embeddings_matrix
 
-    def get_embeddings_for_word(self, word):
+    def get_embeddings_for_word(self, word: str) -> np.ndarray:
         if word not in self.word_inds:
             raise KeyError("Word wasn't found in embeddings matrix")
 

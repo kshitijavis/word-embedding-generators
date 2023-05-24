@@ -1,18 +1,15 @@
-from embedding.io import word_extractor
-from embedding.generator.generator import EmbeddingsGenerator
+import embedding.tokenizers as token
+from embedding.generators import CountGenerator
 
 def main():
-    text_file = open("data/harrpotter_sorcerersstone.txt")
-    words = word_extractor.extract_words(text_file)
+    with open("data/harrpotter_sorcerersstone.txt", "r") as f:
+        text = f.read()
 
-    generator = EmbeddingsGenerator()
-    embeddings = generator.generate_embeddings(words, 1)
+    tokenizer = token.Whitespace(text)
+    words = tokenizer.get_tokens()
 
-    harry_emb = embeddings.get_embeddings_for_word("Harry")
-
-    print(harry_emb)
-
-    text_file.close()
+    generator = CountGenerator(1)
+    embeddings = generator.generate_embeddings(words)
 
 
 if __name__ == "__main__":

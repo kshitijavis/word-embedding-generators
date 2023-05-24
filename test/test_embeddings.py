@@ -1,4 +1,4 @@
-from embedding.generator.embeddings import WordEmbeddings
+from embedding.embeddings import WordEmbeddings
 import numpy as np
 import unittest
 

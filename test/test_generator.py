@@ -1,14 +1,14 @@
 import unittest
 
-from embedding.generator.generator import EmbeddingsGenerator
+from embedding.generators import CountGenerator
 
 class TestGenerator(unittest.TestCase):
     def test_window_size_1(self):
         sentence = "a b c"
         words = sentence.split(" ")
 
-        generator = EmbeddingsGenerator()
-        embeddings = generator.generate_embeddings(words, 1)
+        generator = CountGenerator(1)
+        embeddings = generator.generate_embeddings(words)
 
         word_inds = embeddings.word_inds
 
@@ -31,8 +31,8 @@ class TestGenerator(unittest.TestCase):
         sentence = "a b c a b b a"
         words = sentence.split(" ")
 
-        generator = EmbeddingsGenerator()
-        embeddings = generator.generate_embeddings(words, 1)
+        generator = CountGenerator(1)
+        embeddings = generator.generate_embeddings(words)
 
         word_inds = embeddings.word_inds
 
@@ -55,8 +55,8 @@ class TestGenerator(unittest.TestCase):
         sentence = "a b c a b b a"
         words = sentence.split(" ")
 
-        generator = EmbeddingsGenerator()
-        embeddings = generator.generate_embeddings(words, 2)
+        generator = CountGenerator(2)
+        embeddings = generator.generate_embeddings(words)
 
         word_inds = embeddings.word_inds
 
@@ -73,4 +73,4 @@ class TestGenerator(unittest.TestCase):
         c_embs = embeddings.get_embeddings_for_word("c")
         self.assertEqual(c_embs[word_inds["a"]], 2)
         self.assertEqual(c_embs[word_inds["b"]], 2)
-        self.assertEqual(c_embs[word_inds["c"]], 1)    
+        self.assertEqual(c_embs[word_inds["c"]], 1)  
